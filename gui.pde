@@ -70,6 +70,53 @@ public void slider6_change1(GSlider source, GEvent event) { //_CODE_:slider6:431
   //println("slider6 - GSlider event occured " + System.currentTimeMillis()%10000000 );
 } //_CODE_:slider6:431756:
 
+public void button1_click1(GButton source, GEvent event) { //_CODE_:button1:289466:
+  selected_file="normalstance.csv";
+  PLAYBACK=true;
+} //_CODE_:button1:289466:
+
+public void button2_click1(GButton source, GEvent event) { //_CODE_:button2:319793:
+  selected_file="sad.csv";
+  PLAYBACK=true;
+} //_CODE_:button2:319793:
+
+public void button3_click1(GButton source, GEvent event) { //_CODE_:button3:218967:
+  selected_file="recording.csv";
+  PLAYBACK=true;
+} //_CODE_:button3:218967:
+
+public void button4_click1(GButton source, GEvent event) { //_CODE_:button4:923212:
+  println("button4 - GButton event occured " + System.currentTimeMillis()%10000000 );
+  myPort.clear();
+  myPort.write("8,0,100,0\n");
+  myPort.write("9,0,100,0\n");
+  
+} //_CODE_:button4:923212:
+
+public void button5_click1(GButton source, GEvent event) { //_CODE_:button5:467161:
+  println("button5 - GButton event occured " + System.currentTimeMillis()%10000000 );
+  myPort.clear();
+  myPort.write("8,0,0,0\n");
+  myPort.write("9,0,0,0\n");
+  
+} //_CODE_:button5:467161:
+
+public void button6_click1(GButton source, GEvent event) { //_CODE_:button6:927708:
+  println("button6 - GButton event occured " + System.currentTimeMillis()%10000000 );
+} //_CODE_:button6:927708:
+
+public void button7_click1(GButton source, GEvent event) { //_CODE_:button7:386892:
+  println("button7 - GButton event occured " + System.currentTimeMillis()%10000000 );
+} //_CODE_:button7:386892:
+
+public void button8_click1(GButton source, GEvent event) { //_CODE_:button8:478806:
+  println("button8 - GButton event occured " + System.currentTimeMillis()%10000000 );
+} //_CODE_:button8:478806:
+
+public void button9_click1(GButton source, GEvent event) { //_CODE_:button9:853082:
+  println("button9 - GButton event occured " + System.currentTimeMillis()%10000000 );
+} //_CODE_:button9:853082:
+
 
 
 // Create all the GUI controls. 
@@ -79,7 +126,7 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setCursor(ARROW);
   if(frame != null)
-    frame.setTitle("Robotic Arm Controller");
+    frame.setTitle("Controlador de Lampara");
   slider1 = new GSlider(this, 366, 15, 350, 75, 30.0);
   slider1.setShowValue(true);
   slider1.setShowLimits(true);
@@ -107,7 +154,7 @@ public void createGUI(){
   slider3.setNumberFormat(G4P.INTEGER, 0);
   slider3.setOpaque(false);
   slider3.addEventHandler(this, "slider3_change1");
-  slider4 = new GSlider(this, 366, 244, 350, 75, 30.0);
+  slider4 = new GSlider(this, 365, 244, 350, 75, 30.0);
   slider4.setShowValue(true);
   slider4.setShowLimits(true);
   slider4.setLimits(90.0, 0.0, 180.0);
@@ -125,7 +172,7 @@ public void createGUI(){
   slider5.addEventHandler(this, "slider5_change1");
   slider2d1 = new GSlider2D(this, 26, 148, 305, 153);
   slider2d1.setLimitsX(75.0, 0.0, 175.0);
-  slider2d1.setLimitsY(75.0, 0.0, 150.0);
+  slider2d1.setLimitsY(75.0, 0.0, 200.0);
   slider2d1.setNumberFormat(G4P.DECIMAL, 0);
   slider2d1.setOpaque(true);
   slider2d1.addEventHandler(this, "slider2d1_change1");
@@ -159,11 +206,39 @@ public void createGUI(){
   slider6.setNumberFormat(G4P.INTEGER, 0);
   slider6.setOpaque(false);
   slider6.addEventHandler(this, "slider6_change1");
-  label7 = new GLabel(this, 501, 424, 80, 20);
-  label7.setText("Wrist Angle");
-  label7.setOpaque(false);
-  label8 = new GLabel(this, 111, 443, 80, 20);
-  label8.setText("Claw");
+  button1 = new GButton(this, 32, 536, 80, 30);
+  button1.setText("Normal");
+  button1.addEventHandler(this, "button1_click1");
+  button2 = new GButton(this, 124, 537, 80, 30);
+  button2.setText("Sad");
+  button2.addEventHandler(this, "button2_click1");
+  button3 = new GButton(this, 216, 537, 80, 30);
+  button3.setText("Blink");
+  button3.addEventHandler(this, "button3_click1");
+  button4 = new GButton(this, 33, 577, 80, 30);
+  button4.setText("Yes");
+  button4.addEventHandler(this, "button4_click1");
+  button5 = new GButton(this, 124, 577, 80, 30);
+  button5.setText("No");
+  button5.addEventHandler(this, "button5_click1");
+  button6 = new GButton(this, 215, 578, 80, 30);
+  button6.setText("Face text");
+  button6.addEventHandler(this, "button6_click1");
+  label9 = new GLabel(this, 173, 443, 115, 20);
+  label9.setText("Enable LeapMotion");
+  label9.setTextAlign(GAlign.LEFT, GAlign.MIDDLE);
+  label9.setOpaque(false);
+  button7 = new GButton(this, 34, 619, 80, 30);
+  button7.setText("Face text");
+  button7.addEventHandler(this, "button7_click1");
+  button8 = new GButton(this, 125, 619, 80, 30);
+  button8.setText("Face text");
+  button8.addEventHandler(this, "button8_click1");
+  button9 = new GButton(this, 216, 619, 80, 30);
+  button9.setText("Face text");
+  button9.addEventHandler(this, "button9_click1");
+  label8 = new GLabel(this, 99, 442, 80, 20);
+  label8.setText("Light");
   label8.setOpaque(false);
 }
 
@@ -183,6 +258,15 @@ GLabel label4;
 GLabel label5; 
 GLabel label6; 
 GSlider slider6; 
-GLabel label7; 
+GButton button1; 
+GButton button2; 
+GButton button3; 
+GButton button4; 
+GButton button5; 
+GButton button6; 
+GLabel label9; 
+GButton button7; 
+GButton button8; 
+GButton button9; 
 GLabel label8; 
 
